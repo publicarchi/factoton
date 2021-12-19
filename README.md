@@ -15,11 +15,17 @@ XSL is developed under Saxon XSLT processor. See below why
 ## Test niveau 2
 
 Du texte avec **du gras** et de l’*italic*. Et puis
+Du texte, encore du texte
+
+
+Omnis necessitatibus omnis non omnis id sequi adipisci distinctio. Doloribus temporibus expedita ~~laborum~~ asperiores fugiat ipsam mollitia. Recusandae rerum velit consequatur placeat explicabo cupiditate in aperiam. Error eum aut debitis explicabo[1] aut reprehenderit earum fugiat. Qui ipsa facilis voluptatem vel dolor doloremque placeat. Expedita amet alias voluptatibus occaecati nemo.
 
 une liste :
 
 - premier item
 - deuxième item
+
+### Test niveau 3
 
 Et du texte [un lien](url.extension)
 
@@ -43,3 +49,4 @@ Markdown references
 - Vieiro, Antonio. (2016) 2021. *Xmark*. XSLT. https://github.com/vieiro/xmark.
 - *XML catalog*. (2013) 2021. XSLT. PeerJ. https://github.com/PeerJ/jats-conversion.
 - Zeux. s. d. « Parsing-xml.markdown ». *Gist*. Consulté le 19 décembre 2021. https://gist.github.com/zeux/5346409.
+
