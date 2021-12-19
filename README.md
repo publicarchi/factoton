@@ -21,3 +21,5 @@ Et du texte [un lien](url.extension)
 
 [1] Note
 
+à voir https://github.com/kermitt2/Pub2TEI
+

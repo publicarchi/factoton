@@ -16,11 +16,9 @@
   
   @use template param -i {http://www.w3.org/1999/XSL/Transform}initial-template
   
-  Instead of converting Markdown directly to any format, factoton parses Markdown to an AST (abstract syntax tree) before rendering it. 
-  This common AST can then be transformed to HTML, XML-TEI or any format, allowing manipulation before rendering.
-  Ultimately, we would like to achieve a full implementation of Commonmark with testing. 
-  We target the following formats : HTML5, jTEI-article, TEI-SimplePrint., DITA, DocBook.
-  The software will take advantage of the new packaging feature of XSLT3.
+  @target : Instead of converting Markdown directly to any format, factoton parses Markdown to an AST (abstract syntax tree) before rendering it. This common AST can then be transformed to HTML, XML-TEI or any format, allowing manipulation before rendering. Ultimately, we would like to achieve a full implementation of Commonmark with testing. We target the following formats : HTML5, jTEI-article, TEI-SimplePrint., DITA, DocBook, JATS, odt and docx. The software will take advantage of the new packaging feature of XSLT3.
+  
+  Why a new implementation? While one of the application areas of XSLT is structured document processing, there is no standard implementation of CommonMark in this language. Particularly interested in the production of XML documents, factoton supports, among other things, the hierarchical structuring of documents.
   
   Supported Markdown specifications
   | Flavor | Version |
@@ -111,8 +109,27 @@
   
   <xsl:function name="fct:parseLine" as="element()*">
     <xsl:param name="line" as="xs:string*"/>
-    
     <xsl:variable name="normalizedLine" select="normalize-space($line)"/>
+    <xsl:variable name="blockOpenners" select="(
+      '.',
+      '^&lt;(?:script|pre|style)(?:\s|&gt;|$)',
+      '^&lt;!--',
+      '^&lt;[?]',
+      '^&lt;![A-Z]',
+      '^&lt;!\[CDATA\[',
+      '^&lt;[/]?(?:address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[123456]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|nav|noframes|ol|optgroup|option|p|param|section|source|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)(?:\s|[/]?[&gt;]|$)'
+      )"/>
+    <!--  new RegExp("^(?:" + OPENTAG + "|" + CLOSETAG + ")\\s*$", "i") -->
+    <!-- 2 et 7, option i -->
+    <xsl:variable name="blockClosers" select="(
+      '.',
+      '&lt;\/(?:script|pre|style)>',
+      '--&gt;',
+      '\?&gt;',
+      '&gt;',
+      '\]\]&gt;'
+      )"/>
+    
     <xsl:choose>
       <xsl:when test="string-length($normalizedLine)=0"/>
       <xsl:when test="starts-with($line, '    ')">
