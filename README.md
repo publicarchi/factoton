@@ -50,3 +50,5 @@ Markdown references
 - *XML catalog*. (2013) 2021. XSLT. PeerJ. https://github.com/PeerJ/jats-conversion.
 - Zeux. s. d. « Parsing-xml.markdown ». *Gist*. Consulté le 19 décembre 2021. https://gist.github.com/zeux/5346409.
 
+à voir https://github.com/kermitt2/Pub2TEI
+
