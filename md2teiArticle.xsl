@@ -14,7 +14,7 @@
     @see https://stackoverflow.com/questions/3549827/converting-simple-markdownstring-to-html-with-xslt
   -->
   <xsl:param name="input-encoding" select="'UTF-8'" as="xs:string"/>
-  <xsl:param name="input-uri" select="/Users/emmanuelchateau/publicarchitectura/transx/README.md"/>
+  <xsl:param name="input-uri" select="/Users/emmanuelchateau/publicarchitectura/hnu6052/plan-de-cours.md"/>
   
   <xsl:output indent="no" method="text" encoding="UTF-8" />
   <xsl:strip-space elements="*" />
@@ -93,11 +93,11 @@
     </TEI>
   </xsl:template>
   
-  <xsl:template name="getYaml">
+  <!--<xsl:template name="getYaml">
     <xsl:for-each select="tokenize(., '\n')">
-    <!-- @todo -->
+    <!-\- @todo -\->
     </xsl:for-each>
-  </xsl:template>
+  </xsl:template>-->
   <xsl:template name="gatherText">
     <xsl:for-each select="tokenize(., '\n')">
       <xsl:sequence select="html:parseLine(.)"/>
